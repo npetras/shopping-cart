@@ -4,7 +4,7 @@
 
 #include "Category.h"
 #include <iostream>
-
+static unsigned int catIDcount =  1;
 ostream &operator<<(ostream &ob, Category a) {
     ob << a.catName << "\t" << a.catDesc;
     return ob;
@@ -16,9 +16,10 @@ Category::Category() {
     this->catDesc = "";
 }
 
-Category::Category(string catName, string catDesc, unsigned int catID) {
+Category::Category(string catName, string catDesc) {
     this->catName = catName;
-    this->catID = catID;
+    this->catID = Category::catIDcount;
+    ++Category::catIDcount;
     this->catDesc = catDesc;
 }
 
@@ -35,9 +36,6 @@ unsigned int Category::getCatId() const {
     return catID;
 }
 
-void Category::setCatId(unsigned int catId) {
-    catID = catId;
-}
 
 const string &Category::getCatDesc() const {
     return catDesc;

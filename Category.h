@@ -12,12 +12,13 @@ using namespace std;
 class Category {
 public:
     string catName = "";
+    static unsigned int catIDcount;
     unsigned int catID;
     string catDesc;
 
     Category();
 
-    Category(string catName, string catDesc, unsigned int catID);
+    Category(string catName, string catDesc);
 
     friend ostream &operator<<(ostream &ob, Category a);
 
@@ -26,8 +27,6 @@ public:
     void setCatName(const string &catName);
 
     unsigned int getCatId() const;
-
-    void setCatId(unsigned int catId);
 
     const string &getCatDesc() const;
 
