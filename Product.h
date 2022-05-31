@@ -3,20 +3,22 @@
 //
 
 #include <string>
+
 using namespace std;
 
 
 #ifndef INC_7_SHOPPING_CART_CLION_PROJ_PRODUCT_H
 #define INC_7_SHOPPING_CART_CLION_PROJ_PRODUCT_H
 
-class Product{
+class Product {
     int id;
     string name;
     int price;
     int categoryId;
 public:
     Product(int id, string name, int price, int categoryId);
-    friend ostream& operator<<(ostream& os, const Product& dt);
+
+    friend ostream &operator<<(ostream &os, const Product &dt);
 
     int getId() const;
 
@@ -35,4 +37,5 @@ public:
     void setCategoryId(int categoryId);
 
 };
+
 #endif //INC_7_SHOPPING_CART_CLION_PROJ_PRODUCT_H

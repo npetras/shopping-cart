@@ -5,22 +5,55 @@
 #include "iostream"
 #include "User.h"
 
-void User::addItem() {
-
-}
-
 Category User::findCategory(int id, vector<Category> categories) {
-    for (Category &c : categories) {
+
+    for (Category &c: categories) {
         if (id == c.getCatId()) {
             return c;
         }
     }
+    Category blank;
+    return (blank);
 }
 
-void User::printTrolley(const vector<Category>& categories) {
-    cout << "ID\tName\tPrice\tCategory\tDescription" << endl;
-    for (auto & product : trolley) {
+void User::printTrolley(const vector<Category> &categories) {
+
+    cout << "ID\tName\tPrice\tCategory\tDescription\tQuantity" << endl;
+    for (auto &product: trolley) {
         Category category = findCategory(product.getCategoryId(), categories);
-        cout << product << category;
+
+        cout << product << category << "\t" << productQuantity[product.getId()];
+    }
+}
+
+void User::addItem(vector<Product> &products) {
+    int givenID;
+    cout << "Search for product ID: ";
+    cin >> givenID;
+
+    for (Product &p: products) {
+        if (givenID == p.getId()) {
+            trolley.push_back(p);
+            auto mapIt = productQuantity.find(p.getId());
+
+            if (mapIt == productQuantity.end()) {
+                productQuantity.insert({p.getId(), 1});
+            } else {
+                productQuantity[p.getId()] = productQuantity[p.getId()] + 1;
+            }
+        }
+    }
+    cout << trolley.at(0);
+}
+
+void User::removeItem() {
+    int givenID;
+    cout << "Remove product ID: ";
+    cin >> givenID;
+
+    for (int i = 0; i < trolley.size(); i++) {
+        if (givenID == trolley.at(i).getId()) {
+            trolley.erase(trolley.begin() + i);
+        }
     }
 }

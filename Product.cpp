@@ -12,7 +12,7 @@ Product::Product(int id, string name, int price, int categoryId) {
     this->categoryId = categoryId;
 }
 
-ostream& operator<<(ostream& os, const Product& p) {
+ostream &operator<<(ostream &os, const Product &p) {
     os << p.id << "\t" << p.name << "\t" << p.price << "\t";
     return os;
 }

@@ -5,21 +5,18 @@
 #include "Category.h"
 #include <iostream>
 
-ostream& operator<<(ostream& ob, Category a)
-{
+ostream &operator<<(ostream &ob, Category a) {
     ob << a.catName << "\t" << a.catDesc;
     return ob;
 }
 
-Category::Category()
-{
+Category::Category() {
     this->catName = "";
     this->catID = 0;
     this->catDesc = "";
 }
 
-Category::Category(string catName, string catDesc, unsigned int catID)
-{
+Category::Category(string catName, string catDesc, unsigned int catID) {
     this->catName = catName;
     this->catID = catID;
     this->catDesc = catDesc;

@@ -7,16 +7,20 @@
 
 
 #include <vector>
+#include <unordered_map>
 #include "Product.h"
 #include "Category.h"
 
 class User {
-    vector<Product> trolley;
+    
+    unordered_map<int, int> productQuantity;
 
     Category findCategory(int id, vector<Category> categories);
 public:
-    void addItem();
-    void printTrolley(const vector<Category>& categories)
+    vector<Product> trolley;
+    void printTrolley(const vector<Category>& categories);
+    void addItem(vector<Product> &products);
+    void removeItem();
 };
 
 
