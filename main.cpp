@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <vector>
 #include <unordered_map>
 
@@ -58,7 +57,6 @@ void printTrolley(const vector<Product>& products, const vector<Category>& categ
         cout << product << category;
     }
 }
-
 
 int main()
 {
