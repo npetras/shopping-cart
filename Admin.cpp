@@ -1,6 +1,22 @@
+#include "iostream"
+
 #include "Admin.h"
 
-void Admin::addProducts(Product item) {
+
+void Admin::addProducts() {
+    string name;
+    int price;
+    int catId;
+
+    cout << "Please provide product details" << endl;
+    cout << "Product name: ";
+    getline(cin, name);
+    cout << "Product price: ";
+    cin >> price;
+    cout << "Category Id: ";
+    cin >> catId;
+
+    Product item(name, price, catId);
     products.push_back(item);
 }
 
@@ -27,4 +43,12 @@ std::vector<Product> Admin::getFromRange(double lower, double upper) {
             foundProds.push_back(p);
         }
     return foundProds;
+}
+
+const vector<Category> &Admin::getCategories() const {
+    return categories;
+}
+
+const vector<Product> &Admin::getProducts() const {
+    return products;
 }
