@@ -13,9 +13,11 @@ public:
 
     void addCategory();
 
-    void printProducts();
+    void printCategory(string name);
 
     void printRange(int lower, int upper);
+
+    void printAllProducts();
 
     std::vector<Product> getByName(string catName);
 

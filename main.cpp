@@ -11,6 +11,12 @@ void userChoices(vector<Product> &products, const vector<Category> &categories, 
 
 void adminChoices(Admin admin);
 
+void printingChoices(Admin &admin);
+
+void printCategory(Admin &admin);
+
+void printRange(Admin &admin);
+
 using namespace std;
 
 
@@ -47,7 +53,7 @@ void adminChoices(Admin admin) {
     int ch;
     do {
         cout << "What do you want to do?" << endl;
-        cout << "1. Add Products  2. Add Categories 3. See all Records 4. Exit" << endl;
+        cout << "1. Add Products  2. Add Categories 3. See Records 4. Exit" << endl;
         cin >> ch;
 
         switch (ch) {
@@ -58,7 +64,7 @@ void adminChoices(Admin admin) {
                 admin.addCategory();
                 break;
             case 3:
-                admin.printRange(10, 20);
+                printingChoices(admin);
                 break;
             case 4:
                 cout << "Returning to user selection" << endl;
@@ -68,6 +74,46 @@ void adminChoices(Admin admin) {
         }
     } while (ch != 4);
 
+}
+
+void printingChoices(Admin &admin) {
+    int printCh;
+    cout << "How do you want to see the product records?" << endl;
+    cout << "1. Category name 2. Price range 3. All products: ";
+    cin >> printCh;
+    switch (printCh) {
+        case 1:
+            printCategory(admin);
+            break;
+        case 2:
+            printRange(admin);
+            break;
+        case 3:
+            admin.printAllProducts();
+            break;
+        default:
+            cout << "Invalid choice" << endl;
+            break;
+    }
+}
+
+void printRange(Admin &admin) {
+    int lower;
+    int upper;
+    cout << "Provide the range" << endl;
+    cout << "Lower bound: ";
+    cin >> lower;
+    cout << "Upper bound: ";
+    cin >> upper;
+    admin.printRange(lower, upper);
+}
+
+void printCategory(Admin &admin) {
+    string categoryName;
+    cout << "Enter the category name: " << endl;
+    getline(cin, categoryName);
+    getline(cin, categoryName);
+    admin.printCategory(categoryName);
 }
 
 void userChoices(vector<Product> &products, const vector<Category> &categories, User *user) {
