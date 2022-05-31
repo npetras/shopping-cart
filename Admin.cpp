@@ -10,6 +10,7 @@ void Admin::addProducts() {
 
     cout << "Please provide product details" << endl;
     cout << "Product name: ";
+    cin.ignore();
     getline(cin, name);
     cout << "Product price: ";
     cin >> price;
