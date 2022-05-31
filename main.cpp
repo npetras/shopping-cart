@@ -50,18 +50,22 @@ void adminChoices(Admin admin) {
         cout << "1. Add Products  2. Add Categories 3. See all Records 4. Exit" << endl;
         cin >> ch;
 
-        Product digestives("digestives", 100, 1);
-
         switch (ch) {
             case 1:
-                admin.addProducts();
+                admin.addProduct();
+                break;
+            case 2:
+                admin.addCategory();
+                break;
+            case 3:
+                admin.printRange(10, 20);
                 break;
             case 4:
                 cout << "Returning to user selection" << endl;
+                break;
             default:
                 cout << "Invalid choice" << endl;
         }
-        cout << admin.getProducts().at(0);
     } while (ch != 4);
 
 }

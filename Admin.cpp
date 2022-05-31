@@ -1,15 +1,17 @@
 #include "iostream"
 
 #include "Admin.h"
+#include "User.h"
 
 
-void Admin::addProducts() {
+void Admin::addProduct() {
     string name;
     int price;
     int catId;
 
     cout << "Please provide product details" << endl;
-    cout << "Product name: ";
+    cout << "Product name: " << endl;
+    getline(cin, name);
     getline(cin, name);
     cout << "Product price: ";
     cin >> price;
@@ -20,7 +22,18 @@ void Admin::addProducts() {
     products.push_back(item);
 }
 
-void Admin::addCategories(Category newCat) {
+void Admin::addCategory() {
+    string name;
+    string description;
+
+    cout << "Please provide category details" << endl;
+    cout << "Category name: " << endl;
+    getline(cin, name);
+    getline(cin, name);
+    cout << "Category description: " << endl;
+    getline(cin, description);
+
+    Category newCat(name, description);
     categories.push_back(newCat);
 }
 
@@ -36,7 +49,7 @@ std::vector<Product> Admin::getByName(string catName) {
     return found;
 }
 
-std::vector<Product> Admin::getFromRange(double lower, double upper) {
+std::vector<Product> Admin::getFromRange(int lower, int upper) {
     vector<Product> foundProds;
     for (Product p: products)
         if (lower <= p.getPrice() && p.getPrice() <= upper) {
@@ -51,4 +64,32 @@ const vector<Category> &Admin::getCategories() const {
 
 const vector<Product> &Admin::getProducts() const {
     return products;
+}
+
+void Admin::printProducts() {
+    cout << "ID\tName\tPrice\tCategory\tDescription\tQuantity" << endl;
+    for (auto &product: this->products) {
+        Category category = findCategory(product.getCategoryId());
+        cout << product << category;
+        cout << endl;
+    }
+}
+
+Category Admin::findCategory(int id) {
+    for (Category c: categories) {
+        if (id == c.getCatId()) {
+            return c;
+        }
+    }
+    Category blank;
+    return (blank);
+}
+
+void Admin::printRange(int lower, int upper) {
+    vector<Product> products = getFromRange(lower, upper);
+    for (auto &product: products) {
+        Category category = findCategory(product.getCategoryId());
+        cout << product << category << endl;
+    }
+
 }
