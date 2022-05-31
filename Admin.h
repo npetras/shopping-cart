@@ -7,7 +7,6 @@
 class Admin
 {
 private:
-
     std::vector<Category> categories;
     std::vector<Product> products;
 public:
