@@ -11,18 +11,18 @@ using namespace std;
 #define INC_7_SHOPPING_CART_CLION_PROJ_PRODUCT_H
 
 class Product {
+    static int IDcount;
     int id;
     string name;
     int price;
     int categoryId;
 public:
-    Product(int id, string name, int price, int categoryId);
+    Product(string name, int price, int categoryId);
 
     friend ostream &operator<<(ostream &os, const Product &dt);
 
     int getId() const;
 
-    void setId(int id);
 
     const string &getName() const;
 

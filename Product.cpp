@@ -4,9 +4,11 @@
 #include "iostream"
 
 #include "Product.h"
+int Product::IDcount = 1;
 
-Product::Product(int id, string name, int price, int categoryId) {
-    this->id = id;
+Product::Product(string name, int price, int categoryId) {
+    this->id = Product::IDcount;
+    ++Product::IDcount;
     this->name = name;
     this->price = price;
     this->categoryId = categoryId;
@@ -21,9 +23,7 @@ int Product::getId() const {
     return id;
 }
 
-void Product::setId(int id) {
-    Product::id = id;
-}
+
 
 const string &Product::getName() const {
     return name;

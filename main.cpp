@@ -28,10 +28,11 @@ int main() {
     products.push_back(digestives);
 
     // choose between User and Admin
+    User* user = new User();
 
     while (1) {
         cout << "Trolley" << endl;
-        User *user = new User();
+        
 
         user->printTrolley(categories);
 
