@@ -4,7 +4,8 @@
 
 #include "Category.h"
 #include <iostream>
-static unsigned int catIDcount =  1;
+unsigned int Category::catIDcount =  1;
+
 ostream &operator<<(ostream &ob, Category a) {
     ob << a.catName << "\t" << a.catDesc;
     return ob;
