@@ -3,6 +3,7 @@
 //
 
 #include "Category.h"
+#include <iostream>
 
 ostream& operator<<(ostream& ob, Category a)
 {

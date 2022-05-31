@@ -1,6 +1,8 @@
 //
 // Created by Nicolas Petras on 31/05/2022.
 //
+#include "iostream"
+
 #include "Product.h"
 
 Product::Product(int id, string name, int price, int categoryId) {
