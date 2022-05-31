@@ -15,7 +15,7 @@ class User {
     
     unordered_map<int, int> productQuantity;
 
-    Category findCategory(int id, vector<Category> categories);
+    static Category findCategory(int id, const vector<Category>& categories);
 public:
     vector<Product> trolley;
     void printTrolley(const vector<Category>& categories);
