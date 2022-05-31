@@ -77,6 +77,8 @@ int main()
     Product digestives(1, "Digestives", 10, 2);
     products.push_back(digestives);
 
+    // choose between User and Admin
+
     while (1)
     {
         cout << "Trolley" << endl;
