@@ -5,49 +5,57 @@
 #include "Category.h"
 #include "Product.h"
 #include "User.h"
+#include "Admin.h"
+
+void userChoices(int ch, vector<Product> &products, const vector<Category> &categories, User *user);
 
 using namespace std;
 
 
 int main() {
     int ch;
+    int userCh;
+
     vector<Product> products;
     vector<Category> categories;
-    //vector<Product> trolley;
-    //unordered_map<int, int> productQuantity;
-
-    Category soap("soap", "For cleaning", 1);
-    Category food("food", "For eating", 2);
-    Category sweets("sweets", "For eating too", 3);
-
-    categories.push_back(soap);
-    categories.push_back(food);
-    categories.push_back(sweets);
-
-    Product digestives(1, "Digestives", 10, 2);
-    products.push_back(digestives);
 
     // choose between User and Admin
-    User* user = new User();
+    User *user = new User();
+    Admin admin;
 
     while (1) {
-        cout << "Trolley" << endl;
-        
 
-        user->printTrolley(categories);
+        cout << "Select User" << endl;
+        cout << "1. Admin 2. Shopper" << endl;
 
-        cout << "\nWhat do you want to do?";
-        cout << "1. Add Items  2. Remove from Trolley";
-        cin >> ch;
-
-        switch (ch) {
+        switch (userCh) {
             case 1:
-                user->addItem(products);
-                break;
-
+                adminChoices();
             case 2:
-                user->removeItem();
-                break;
+                products = admin.getProducts();
+                userChoices(ch, products, categories, user);
         }
+
+
+
+    }
+}
+
+void userChoices(int ch, vector<Product> &products, const vector<Category> &categories, User *user) {
+    user->printTrolley(categories);
+
+    cout << "\nWhat do you want to do?";
+    cout << "1. Add Items  2. Remove from Trolley";
+    cin >> ch;
+
+    switch (ch) {
+        case 1:
+            user->addItem(products);
+            break;
+        case 2:
+            user->removeItem();
+            break;
+        default:
+            cout << "Invalid choice" << endl;
     }
 }

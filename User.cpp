@@ -5,9 +5,9 @@
 #include "iostream"
 #include "User.h"
 
-Category User::findCategory(int id, vector<Category> categories) {
+Category User::findCategory(int id, const vector<Category>& categories) {
 
-    for (Category &c: categories) {
+    for (Category c: categories) {
         if (id == c.getCatId()) {
             return c;
         }
@@ -19,7 +19,7 @@ Category User::findCategory(int id, vector<Category> categories) {
 void User::printTrolley(const vector<Category> &categories) {
 
     cout << "ID\tName\tPrice\tCategory\tDescription\tQuantity" << endl;
-    for (auto &product: trolley) {
+    for (auto &product: this->trolley) {
         Category category = findCategory(product.getCategoryId(), categories);
 
         cout << product << category << "\t" << productQuantity[product.getId()];
@@ -33,7 +33,9 @@ void User::addItem(vector<Product> &products) {
 
     for (Product &p: products) {
         if (givenID == p.getId()) {
-            trolley.push_back(p);
+            if (productQuantity[p.getId()] == 0) {
+                this->trolley.push_back(p);
+            }
             auto mapIt = productQuantity.find(p.getId());
 
             if (mapIt == productQuantity.end()) {
@@ -43,7 +45,6 @@ void User::addItem(vector<Product> &products) {
             }
         }
     }
-    cout << trolley.at(0);
 }
 
 void User::removeItem() {
