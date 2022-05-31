@@ -118,21 +118,27 @@ void printCategory(Admin &admin) {
 
 void userChoices(vector<Product> &products, const vector<Category> &categories, User *user) {
     int ch;
-    cout << "Trolley:" << endl;
-    user->printTrolley(categories);
+    do {
+        cout << "Trolley:" << endl;
+        user->printTrolley(categories);
 
-    cout << "\nWhat do you want to do?";
-    cout << "1. Add Items  2. Remove from Trolley";
-    cin >> ch;
+        cout << "What do you want to do?" << endl;
+        cout << "1. Add Items  2. Remove item from Trolley 3. Clear cart" << endl;
+        cin >> ch;
 
-    switch (ch) {
-        case 1:
-            user->addItem(products);
-            break;
-        case 2:
-            user->removeItem();
-            break;
-        default:
-            cout << "Invalid choice" << endl;
-    }
+        switch (ch) {
+            case 1:
+                user->addItem(products);
+                break;
+            case 2:
+                user->removeItem();
+                break;
+            case 3:
+                user->clearCart();
+            case 4:
+                cout << "Returning to user selection" << endl;
+            default:
+                cout << "Invalid choice" << endl;
+        }
+    } while (ch != 4);
 }

@@ -5,7 +5,7 @@
 #include "iostream"
 #include "User.h"
 
-Category User::findCategory(int id, const vector<Category>& categories) {
+Category User::findCategory(int id, const vector<Category> &categories) {
 
     for (Category c: categories) {
         if (id == c.getCatId()) {
@@ -55,6 +55,26 @@ void User::removeItem() {
     for (int i = 0; i < trolley.size(); i++) {
         if (givenID == trolley.at(i).getId()) {
             trolley.erase(trolley.begin() + i);
+        }
+    }
+}
+
+void User::clearCart() {
+    char ch;
+    cout << "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    cout << "\nThis will clear all items in the cart. Proceed? (y/n)";
+    cin >> ch;
+
+    while (1) {
+        if (ch == 'y') {
+            trolley.clear();
+            productQuantity.clear();
+            break;
+        } else if (ch == 'n') {
+            break;
+        } else {
+            cout << "\nPlease enter valid choice. (y/n)";
+            cin >> ch;
         }
     }
 }
