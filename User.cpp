@@ -28,23 +28,41 @@ void User::printTrolley(const vector<Category> &categories) {
 
 void User::addItem(vector<Product> &products) {
     int givenID;
-    cout << "Search for product ID: ";
+    int givenQty;
+    bool isFound = false;
+    //char userCh;
+    cout << "\nSearch for product ID: ";
     cin >> givenID;
 
-    for (Product &p: products) {
-        if (givenID == p.getId()) {
-            if (productQuantity[p.getId()] == 0) {
-                this->trolley.push_back(p);
-            }
-            auto mapIt = productQuantity.find(p.getId());
+    do 
+    {
+        for (Product &p: products) 
+        {
+            if (givenID == p.getId()) 
+            {
+                isFound = true;
+                if (productQuantity[p.getId()] == 0) 
+                {
+                    this->trolley.push_back(p);
+                }
+                cout << "\nProduct " << p.getName() << " found. Enter the quantity of the product you want: ";
+                cin >> givenQty;
 
-            if (mapIt == productQuantity.end()) {
-                productQuantity.insert({p.getId(), 1});
-            } else {
-                productQuantity[p.getId()] = productQuantity[p.getId()] + 1;
+                auto mapIt = productQuantity.find(p.getId());
+                if (mapIt == productQuantity.end()) {
+                    productQuantity.insert({p.getId(), givenQty }); // Put the quantity of the item in the trolley
+                } else {
+                    productQuantity[p.getId()] = productQuantity[p.getId()] + givenQty; // If it already exists add the quantity
+                }
             }
+    
         }
-    }
+        if (!isFound)
+        {
+            cout << "\nProduct with ID " << givenID << " was not found. Please enter a valid ID: ";
+            cin >> givenID;
+        }
+    } while (!isFound);
 }
 
 void User::removeItem() {
