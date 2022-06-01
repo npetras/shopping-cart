@@ -17,13 +17,15 @@ Category User::findCategory(int id, const vector<Category> &categories) {
 }
 
 void User::printTrolley(const vector<Category> &categories) {
-
-    cout << "ID\tName\tPrice\tCategory\tDescription\tQuantity" << endl;
+    int totalCost = 0;
+    cout << "\nID\tName\tPrice\tCategory\tDescription\tQuantity" << endl;
     for (auto &product: this->trolley) {
         Category category = findCategory(product.getCategoryId(), categories);
-
-        cout << product << category << "\t" << productQuantity[product.getId()];
+        cout << product << "\t" << category << "\t" << productQuantity[product.getId()];
+        cout << endl;
+        totalCost += product.getPrice();
     }
+    cout << "Total trolley cost: " << totalCost << endl << endl;
 }
 
 void User::addItem(vector<Product> &products) {

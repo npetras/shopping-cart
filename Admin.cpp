@@ -8,6 +8,7 @@ void Admin::addProduct() {
     string name;
     int price;
     int catId;
+    bool validCatId = false;
 
     cout << "Please provide product details" << endl;
     cout << "Product name: ";
@@ -15,8 +16,20 @@ void Admin::addProduct() {
     getline(cin, name);
     cout << "Product price: ";
     cin >> price;
-    cout << "Category Id: ";
-    cin >> catId;
+    while (!validCatId) {
+        
+       
+        cout << "Available Ids:\n";
+        for (const Category& c : categories) {
+            cout << c.getCatId() << " ";
+        }
+        cout << endl;
+        cout << "Category Id:\n";
+        cin >> catId;
+        for (const Category& c : categories) {
+            if (c.getCatId() == catId) validCatId = true;
+        }
+    }
 
     Product item(name, price, catId);
     products.push_back(item);
@@ -103,4 +116,20 @@ void Admin::printCategory(string name) {
         Category category = findCategory(product.getCategoryId());
         cout << product << category << endl;
     }
+}
+
+void Admin::initialise() {
+    Category food("Food", "Something to eat");
+    Category electronics("Electronics", "Gadgets, computers, phones, etc.");
+    categories.push_back(food);
+    categories.push_back(electronics);
+
+    Product digestives("Digestives", 10, 1);
+    Product jaffaCakes("Jaffa Cakes", 11, 1);
+    Product xbox("Xbox One", 100, 2);
+    Product samsungS22("Samsung S22", 150, 2);
+    products.push_back(digestives);
+    products.push_back(jaffaCakes);
+    products.push_back(xbox);
+    products.push_back(samsungS22);
 }
