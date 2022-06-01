@@ -2,6 +2,7 @@
 // Created by Nicolas Petras on 31/05/2022.
 //
 #include "iostream"
+#include <iomanip>
 
 #include "Product.h"
 int Product::IDcount = 1;
@@ -15,7 +16,7 @@ Product::Product(string name, int price, int categoryId) {
 }
 
 ostream &operator<<(ostream &os, const Product &p) {
-    os << p.id << "\t" << p.name << "\t" << p.price << "\t";
+    os << p.id  << setw(15) << p.name << setw(5) <<  p.price;
     return os;
 }
 

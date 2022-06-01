@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <iomanip>
 #include "Category.h"
 #include "Product.h"
 #include "User.h"
@@ -22,6 +22,9 @@ using namespace std;
 
 int main() {
     int userCh;
+    std::cout << std::setw(5) << 0.2 << std::setw(10) << 123456 << std::endl;
+    std::cout << std::setw(5) << 0.12 << std::setw(10) << 123456789 << std::endl;
+
 
     vector<Product> products;
     vector<Category> categories;

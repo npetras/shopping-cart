@@ -2,6 +2,7 @@
 
 #include "Admin.h"
 #include "User.h"
+#include <iomanip>
 
 
 void Admin::addProduct() {
@@ -79,7 +80,7 @@ const vector<Product> &Admin::getProducts() const {
 }
 
 void Admin::printAllProducts() {
-    cout << "ID\tName\tPrice\tCategory\tDescription" << endl;
+    cout << "ID\tName\t  Price\t  Category\tDescription" << endl;
     for (auto &product: this->products) {
         Category category = findCategory(product.getCategoryId());
         cout << product << category;
