@@ -124,7 +124,7 @@ void userChoices(vector<Product> &products, const vector<Category> &categories, 
         user->printTrolley(categories);
 
         cout << "What do you want to do?" << endl;
-        cout << "1. Print Products 2. Add Items  2. Remove item from Trolley 3. Clear cart" << endl;
+        cout << "1. Print Products 2. Add Items  3. Remove item from Trolley  4. Clear cart  5. Exit to User Selection" << endl;
         cin >> ch;
 
         switch (ch) {
@@ -139,12 +139,14 @@ void userChoices(vector<Product> &products, const vector<Category> &categories, 
                 break;
             case 4:
                 user->clearCart();
+                break;
             case 5:
                 cout << "Returning to user selection" << endl;
+                break;
             default:
                 cout << "Invalid choice" << endl;
         }
-    } while (ch != 4);
+    } while (ch != 5);
 }
 
 void printProductsForUser(Admin &admin) {
