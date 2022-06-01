@@ -108,10 +108,15 @@ void Admin::printCategory(string name) {
 void Admin::initialise() {
     Category food("Food", "Something to eat");
     Category electronics("Electronics", "Gadgets, computers, phones, etc.");
+    categories.push_back(food);
+    categories.push_back(electronics);
 
     Product digestives("Digestives", 10, 1);
     Product jaffaCakes("Jaffa Cakes", 11, 1);
     Product xbox("Xbox One", 100, 2);
     Product samsungS22("Samsung S22", 150, 2);
-
+    products.push_back(digestives);
+    products.push_back(jaffaCakes);
+    products.push_back(xbox);
+    products.push_back(samsungS22);
 }
