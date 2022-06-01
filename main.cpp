@@ -152,7 +152,7 @@ void userChoices(vector<Product> &products, const vector<Category> &categories, 
 
 void printProductsForUser(Admin &admin) {
     int ch;
-    cout << "1. Print all 2. Print based on category name" << endl;
+    cout << "\n1. Print all 2. Print based on category name" << endl;
     cin >> ch;
 
     switch (ch) {
@@ -165,6 +165,6 @@ void printProductsForUser(Admin &admin) {
             printCategory(admin);
             break;
         default:
-            cout << "Invalid choice" << endl;
+            cout << "\nInvalid choice" << endl;
     }
 }
