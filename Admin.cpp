@@ -21,9 +21,8 @@ void Admin::addProduct() {
        
         cout << "Available Ids:\n";
         for (const Category& c : categories) {
-            cout << c.getCatId() << " ";
+            cout << c.getCatId() << " Name: " << c.getCatName() << endl;
         }
-        cout << endl;
         cout << "Category Id:\n";
         cin >> catId;
         for (const Category& c : categories) {

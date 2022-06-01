@@ -23,7 +23,7 @@ void User::printTrolley(const vector<Category> &categories) {
         Category category = findCategory(product.getCategoryId(), categories);
         cout << product << "\t" << category << "\t" << productQuantity[product.getId()];
         cout << endl;
-        totalCost += product.getPrice();
+        totalCost += (product.getPrice() * productQuantity[product.getId()]);
     }
     cout << "Total trolley cost: " << totalCost << endl << endl;
 }
