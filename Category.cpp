@@ -52,7 +52,7 @@ string Category::trunStr(string str)
     string tempStr;
     if (str.length() > MAX_STR_LEN)
     {
-        tempStr = str.substr(0, 7);
+        tempStr = str.substr(0, MAX_STR_LEN - 3);
         tempStr += "...";
     }
     return tempStr;
