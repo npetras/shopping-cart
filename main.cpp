@@ -53,7 +53,7 @@ int main() {
 void adminChoices(Admin &admin) {
     int ch;
     do {
-        cout << "What do you want to do?" << endl;
+        cout << "\nWhat do you want to do?" << endl;
         cout << "1. Add Products  2. Add Categories 3. See Records 4. Exit" << endl;
         cin >> ch;
 
@@ -154,9 +154,11 @@ void printProductsForUser(Admin &admin) {
 
     switch (ch) {
         case 1:
+            cout << "Available Products: " << endl;
             admin.printAllProducts();
             break;
         case 2:
+            cout << "Available Products: " << endl;
             printCategory(admin);
             break;
         default:
