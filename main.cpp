@@ -121,7 +121,6 @@ void printCategory(Admin &admin) {
 void userChoices(vector<Product> &products, const vector<Category> &categories, User *user, Admin &admin) {
     int ch;
     do {
-        cout << "Trolley:" << endl;
         user->printTrolley(categories);
 
         cout << "What do you want to do?" << endl;
