@@ -26,6 +26,10 @@ int main() {
     vector<Product> products;
     vector<Category> categories;
 
+    //Category category;
+
+    //cout << category.trunStr("God Help Our Souls");
+
     // choose between User and Admin
     User *user = new User();
     Admin admin;
