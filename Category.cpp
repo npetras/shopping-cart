@@ -45,3 +45,14 @@ const string &Category::getCatDesc() const {
 void Category::setCatDesc(const string &catDesc) {
     Category::catDesc = catDesc;
 }
+
+string Category::trunStr(string str)
+{
+    string tempStr;
+    if (str.length() > maxStrLen)
+    {
+        tempStr = str.substr(0, 7);
+        tempStr += "...";
+    }
+    return tempStr;
+}

@@ -10,6 +10,7 @@
 using namespace std;
 
 class Category {
+    const int maxStrLen = 10;
 public:
     string catName = "";
     static unsigned int catIDcount;
@@ -31,6 +32,8 @@ public:
     const string &getCatDesc() const;
 
     void setCatDesc(const string &catDesc);
+
+    string trunStr(string str);
 
 };
 
