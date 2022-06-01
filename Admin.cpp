@@ -8,6 +8,7 @@ void Admin::addProduct() {
     string name;
     int price;
     int catId;
+    bool validCatId = false;
 
     cout << "Please provide product details" << endl;
     cout << "Product name: ";
@@ -15,8 +16,20 @@ void Admin::addProduct() {
     getline(cin, name);
     cout << "Product price: ";
     cin >> price;
-    cout << "Category Id: ";
-    cin >> catId;
+    while (!validCatId) {
+        
+       
+        cout << "Available Ids:\n";
+        for (const Category& c : categories) {
+            cout << c.getCatId() << " ";
+        }
+        cout << endl;
+        cout << "Category Id:\n";
+        cin >> catId;
+        for (const Category& c : categories) {
+            if (c.getCatId() == catId) validCatId = true;
+        }
+    }
 
     Product item(name, price, catId);
     products.push_back(item);
