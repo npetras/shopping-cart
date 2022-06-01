@@ -104,3 +104,14 @@ void Admin::printCategory(string name) {
         cout << product << category << endl;
     }
 }
+
+void Admin::initialise() {
+    Category food("Food", "Something to eat");
+    Category electronics("Electronics", "Gadgets, computers, phones, etc.");
+
+    Product digestives("Digestives", 10, 1);
+    Product jaffaCakes("Jaffa Cakes", 11, 1);
+    Product xbox("Xbox One", 100, 2);
+    Product samsungS22("Samsung S22", 150, 2);
+
+}

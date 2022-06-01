@@ -19,6 +19,8 @@ public:
 
     void printAllProducts();
 
+    void initialise();
+
     std::vector<Product> getByName(string catName);
 
     std::vector<Product> getFromRange(int lower, int upper);
