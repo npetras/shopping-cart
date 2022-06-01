@@ -13,7 +13,6 @@ void Admin::addProduct() {
     cout << "Product name: ";
     cin.ignore();
     getline(cin, name);
-    getline(cin, name);
     cout << "Product price: ";
     cin >> price;
     cout << "Category Id: ";
