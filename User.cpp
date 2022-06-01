@@ -43,13 +43,20 @@ void User::addItem(vector<Product> &products) {
             if (givenID == p.getId()) 
             {
                 isFound = true;
+                cout << "\nProduct " << p.getName() << " found. Enter the quantity of the product you want: ";
+                cin >> givenQty;
+
+                if (givenQty < 1)
+                {
+                    cout << "\nInvalid quantity.";
+                    return;
+                }
+
                 if (productQuantity[p.getId()] == 0) 
                 {
                     this->trolley.push_back(p);
                 }
-                cout << "\nProduct " << p.getName() << " found. Enter the quantity of the product you want: ";
-                cin >> givenQty;
-
+                
                 auto mapIt = productQuantity.find(p.getId());
                 if (mapIt == productQuantity.end()) {
                     productQuantity.insert({p.getId(), givenQty }); // Put the quantity of the item in the trolley
