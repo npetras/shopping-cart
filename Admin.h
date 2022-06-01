@@ -30,4 +30,6 @@ public:
     const vector<Product> &getProducts() const;
 
     Category findCategory(int id);
+
+    std::string stringToLower(string str);
 };

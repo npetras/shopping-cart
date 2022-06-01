@@ -4,7 +4,6 @@
 #include "User.h"
 #include <iomanip>
 
-
 void Admin::addProduct() {
     string name;
     int price;
@@ -54,7 +53,8 @@ std::vector<Product> Admin::getByName(string catName) {
     std::vector<Product> found;
     Category match;
     for (Category cat: categories)
-        if (cat.catName == catName) {
+
+        if (stringToLower(cat.catName) == stringToLower(catName)) {
             match = cat;
             break;
         }
@@ -132,4 +132,14 @@ void Admin::initialise() {
     products.push_back(jaffaCakes);
     products.push_back(xbox);
     products.push_back(samsungS22);
+}
+
+std::string Admin::stringToLower(string str)
+{
+    string allLower = str;
+    for (int i = 0; i < str.size(); i++)
+    {
+        allLower[i] = tolower(str[i]);
+    }
+    return allLower;
 }
