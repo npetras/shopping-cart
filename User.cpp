@@ -77,13 +77,33 @@ void User::addItem(vector<Product> &products) {
 }
 
 void User::removeItem() {
-    int givenID;
-    cout << "Remove product ID: ";
+    int givenID, givenQty;
+    int foundID;
+    cout << "\nRemove product ID: ";
     cin >> givenID;
 
     for (int i = 0; i < trolley.size(); i++) {
-        if (givenID == trolley.at(i).getId()) {
-            trolley.erase(trolley.begin() + i);
+        if (givenID == trolley.at(i).getId()) 
+        {
+            foundID = trolley.at(i).getId();
+            cout << "\nRemove product quantity: ";
+            cin >> givenQty;
+
+            if (givenQty < 1)
+            {
+                cout << "\nInvalid quantity.";
+                return;
+            }
+
+            //auto mapIt = productQuantity.find(foundID);
+            if (productQuantity[foundID] - givenQty <= 0) {
+                productQuantity.erase(foundID);
+                trolley.erase(trolley.begin() + i);
+            }
+            else
+            {
+                productQuantity[foundID] = productQuantity[foundID] - givenQty;
+            }
         }
     }
 }
