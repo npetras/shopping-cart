@@ -12,15 +12,21 @@
 #include "Category.h"
 
 class User {
-    
+
     unordered_map<int, int> productQuantity;
 
-    static Category findCategory(int id, const vector<Category>& categories);
+    static Category findCategory(int id, const vector<Category> &categories);
+
 public:
     vector<Product> trolley;
-    void printTrolley(const vector<Category>& categories);
+
+    void printTrolley(const vector<Category> &categories);
+
     void addItem(vector<Product> &products);
+
     void removeItem();
+
+    void clearCart();
 };
 
 

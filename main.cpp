@@ -1,18 +1,24 @@
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 
 #include "Category.h"
 #include "Product.h"
 #include "User.h"
 #include "Admin.h"
 
-void userChoices(vector<Product> &products, const vector<Category> &categories, User *user);
+void userChoices(vector<Product> &products, const vector<Category> &categories, User *user, Admin &admin);
 
-void adminChoices(Admin admin);
+void adminChoices(Admin &admin);
+
+void printingChoices(Admin &admin);
+
+void printCategory(Admin &admin);
+
+void printRange(Admin &admin);
+
+void printProductsForUser(Admin &admin);
 
 using namespace std;
-
 
 int main() {
     int userCh;
@@ -35,19 +41,20 @@ int main() {
                 adminChoices(admin);
                 break;
             case 2:
+                // get latest products and categories added by the Admin
                 products = admin.getProducts();
                 categories = admin.getCategories();
-                userChoices(products, categories, user);
+                userChoices(products, categories, user, admin);
                 break;
         }
     }
 }
 
-void adminChoices(Admin admin) {
+void adminChoices(Admin &admin) {
     int ch;
     do {
         cout << "What do you want to do?" << endl;
-        cout << "1. Add Products  2. Add Categories 3. See all Records 4. Exit" << endl;
+        cout << "1. Add Products  2. Add Categories 3. See Records 4. Exit" << endl;
         cin >> ch;
 
         switch (ch) {
@@ -58,7 +65,7 @@ void adminChoices(Admin admin) {
                 admin.addCategory();
                 break;
             case 3:
-                admin.printRange(10, 20);
+                printingChoices(admin);
                 break;
             case 4:
                 cout << "Returning to user selection" << endl;
@@ -70,21 +77,87 @@ void adminChoices(Admin admin) {
 
 }
 
-void userChoices(vector<Product> &products, const vector<Category> &categories, User *user) {
-    int ch;
-    cout << "Trolley:" << endl;
-    user->printTrolley(categories);
+void printingChoices(Admin &admin) {
+    int printCh;
+    cout << "How do you want to see the product records?" << endl;
+    cout << "1. Category name 2. Price range 3. All products: ";
+    cin >> printCh;
+    switch (printCh) {
+        case 1:
+            printCategory(admin);
+            break;
+        case 2:
+            printRange(admin);
+            break;
+        case 3:
+            admin.printAllProducts();
+            break;
+        default:
+            cout << "Invalid choice" << endl;
+            break;
+    }
+}
 
-    cout << "\nWhat do you want to do?";
-    cout << "1. Add Items  2. Remove from Trolley";
+void printRange(Admin &admin) {
+    int lower;
+    int upper;
+    cout << "Provide the range" << endl;
+    cout << "Lower bound: ";
+    cin >> lower;
+    cout << "Upper bound: ";
+    cin >> upper;
+    admin.printRange(lower, upper);
+}
+
+void printCategory(Admin &admin) {
+    string categoryName;
+    cout << "Enter the category name: " << endl;
+    getline(cin, categoryName);
+    getline(cin, categoryName);
+    admin.printCategory(categoryName);
+}
+
+void userChoices(vector<Product> &products, const vector<Category> &categories, User *user, Admin &admin) {
+    int ch;
+    do {
+        cout << "Trolley:" << endl;
+        user->printTrolley(categories);
+
+        cout << "What do you want to do?" << endl;
+        cout << "1. Print Products 2. Add Items  2. Remove item from Trolley 3. Clear cart" << endl;
+        cin >> ch;
+
+        switch (ch) {
+            case 1:
+                printProductsForUser(admin);
+                break;
+            case 2:
+                user->addItem(products);
+                break;
+            case 3:
+                user->removeItem();
+                break;
+            case 4:
+                user->clearCart();
+            case 5:
+                cout << "Returning to user selection" << endl;
+            default:
+                cout << "Invalid choice" << endl;
+        }
+    } while (ch != 4);
+}
+
+void printProductsForUser(Admin &admin) {
+    int ch;
+    cout << "1. Print all 2. Print based on category name" << endl;
     cin >> ch;
 
     switch (ch) {
         case 1:
-            user->addItem(products);
+            admin.printAllProducts();
             break;
         case 2:
-            user->removeItem();
+            printCategory(admin);
             break;
         default:
             cout << "Invalid choice" << endl;

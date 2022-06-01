@@ -28,7 +28,7 @@ void Admin::addCategory() {
 
     cout << "Please provide category details" << endl;
     cout << "Category name: " << endl;
-    getline(cin, name);
+    cin.ignore();
     getline(cin, name);
     cout << "Category description: " << endl;
     getline(cin, description);
@@ -66,8 +66,8 @@ const vector<Product> &Admin::getProducts() const {
     return products;
 }
 
-void Admin::printProducts() {
-    cout << "ID\tName\tPrice\tCategory\tDescription\tQuantity" << endl;
+void Admin::printAllProducts() {
+    cout << "ID\tName\tPrice\tCategory\tDescription" << endl;
     for (auto &product: this->products) {
         Category category = findCategory(product.getCategoryId());
         cout << product << category;
@@ -86,10 +86,21 @@ Category Admin::findCategory(int id) {
 }
 
 void Admin::printRange(int lower, int upper) {
-    vector<Product> products = getFromRange(lower, upper);
-    for (auto &product: products) {
+    vector<Product> rangeProducts = getFromRange(lower, upper);
+
+    cout << "ID\tName\tPrice\tCategory\tDescription" << endl;
+    for (auto &product: rangeProducts) {
         Category category = findCategory(product.getCategoryId());
         cout << product << category << endl;
     }
+}
 
+void Admin::printCategory(string name) {
+    vector<Product> categoryProducts = getByName(name);
+
+    cout << "ID\tName\tPrice\tCategory\tDescription" << endl;
+    for (auto &product: categoryProducts) {
+        Category category = findCategory(product.getCategoryId());
+        cout << product << category << endl;
+    }
 }
