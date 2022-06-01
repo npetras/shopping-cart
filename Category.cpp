@@ -4,10 +4,11 @@
 
 #include "Category.h"
 #include <iostream>
+#include <iomanip>
 unsigned int Category::catIDcount =  1;
 
 ostream &operator<<(ostream &ob, Category a) {
-    ob << a.catName << "\t" << a.catDesc;
+    ob << setw(15) << a.catName << setw(20) << a.catDesc;
     return ob;
 }
 
