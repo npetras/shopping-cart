@@ -50,7 +50,7 @@ void Category::setCatDesc(const string &catDesc) {
 string Category::trunStr(string str)
 {
     string tempStr;
-    if (str.length() > maxStrLen)
+    if (str.length() > MAX_STR_LEN)
     {
         tempStr = str.substr(0, 7);
         tempStr += "...";

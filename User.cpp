@@ -19,7 +19,7 @@ Category User::findCategory(int id, const vector<Category> &categories) {
 
 void User::printTrolley(const vector<Category> &categories) {
     int totalCost = 0;
-    cout << "\nTrolley: " << endl
+    cout << "\nTrolley: " << endl;
     cout << "\nID\tName\tPrice\tCategory\tDescription\tQuantity" << endl;
     for (auto &product: this->trolley) {
         Category category = findCategory(product.getCategoryId(), categories);

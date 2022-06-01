@@ -6,11 +6,11 @@
 #define INC_7_SHOPPING_CART_CLION_PROJ_CATEGORY_H
 
 #include <string>
+#define MAX_STR_LEN 10
 
 using namespace std;
 
 class Category {
-    const int maxStrLen = 10;
 public:
     string catName = "";
     static unsigned int catIDcount;
