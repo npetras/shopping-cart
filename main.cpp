@@ -29,6 +29,7 @@ int main() {
     // choose between User and Admin
     User *user = new User();
     Admin admin;
+    admin.initialise();
 
     while (1) {
 
